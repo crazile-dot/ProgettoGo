@@ -1,5 +1,12 @@
 package main
 
+/**
+import (
+	"log"
+	"os"
+)
+
+
 import (
 	"bufio"
 	"fmt"
@@ -30,12 +37,12 @@ func main() {
 		tot = tot + 1
 	}
 	for i := 0; i < 4; i++ {
-		go worker(chans[i], splittedFile.
+		go worker(chans[i], splittedFile,tot)
 	}
-	// handle first encountered error while reading
+handle first encountered error while reading
 	if err := fileScanner.Err(); err != nil {
 		log.Fatalf("Error while reading file: %s", err)
 	}
 	fmt.Println("in totale il file ha", tot, "righe")
 	file.Close()
-}
+}*/

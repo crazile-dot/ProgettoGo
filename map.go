@@ -5,12 +5,7 @@ import (
 	"strings"
 )
 
-func main() {
-
-	input := []string{
-		"ciao mirko sei uno scemetto e poi hai anche una brutta cera", "ilenia è stupida e ba", "stasera annamo da viecce e te faccio vede io poi chi pesa di più",
-		"che poi da viecce ci andiamo pure domenica a quanto pare", "sì ma io non ho capito te che te magni domenica", "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
-		"ciao stupidi poveri e sfigati faccio un urlo uoooooooo", "ciao ciao ciao ciao ciao ciao ciao ciaoi ciaoi ciaoico aciao"}
+func work(input []string) {
 	find := "ciao"
 	values := mapPhase(input, find)
 	shuffleAndSort := shuffleAndSortPhase(values)

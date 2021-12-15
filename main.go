@@ -1,17 +1,10 @@
 package main
 
-/**
-import (
-	"log"
-	"os"
-)
-
-
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"os"
+	"time"
 )
 
 func somma(ch chan int, uno int, due int) chan int {
@@ -20,29 +13,43 @@ func somma(ch chan int, uno int, due int) chan int {
 }
 
 func main() {
+	var N int = 4
+	var j int = 0
 	var tot int = 0
-	var chans [4]chan string
-	for i := range chans {
-		chans[i] = make(chan string)
+	var chans []chan string
+	for i := 0; i < N; i++ {
+		chans = append(chans, make(chan string))
 	}
-	file, err := os.Open("C:\\Users\\Ilenia\\Desktop\\prova.txt.txt")
+	file, err := os.Open("C:\\Users\\Ilenia\\GolandProjects\\ProgettoGo\\prova.txt.txt")
 	//handle errors while opening
 	if err != nil {
 		log.Fatalf("Error when opening file: %s", err)
 	}
 	fileScanner := bufio.NewScanner(file)
-	var splittedFile [1000]string
+	var splittedFile []string
 	for fileScanner.Scan() {
-		splittedFile[tot] = fileScanner.Text()
-		tot = tot + 1
+		splittedFile = append(splittedFile, fileScanner.Text())
+		tot++
 	}
-	for i := 0; i < 4; i++ {
-		go worker(chans[i], splittedFile,tot)
+
+	for i := 0; i < N; i++ {
+		var batch []string
+		len := j + ((len(splittedFile) - j) / (N - i))
+		time.Sleep(1000)
+		batch = splittedFile[j:len]
+		go worker(chans[i], batch, i)
+		j = len
 	}
-handle first encountered error while reading
+
+	//handle first encountered error while reading
 	if err := fileScanner.Err(); err != nil {
 		log.Fatalf("Error while reading file: %s", err)
 	}
-	fmt.Println("in totale il file ha", tot, "righe")
+	//fmt.Println("in totale il file ha", tot, "righe")
 	file.Close()
-}*/
+}
+
+func worker(c chan string, splitted []string, num int) {
+	//fmt.Println("Sono il worker numero ", num, " ed ho queste righe: ", splitted)
+	work(splitted)
+}

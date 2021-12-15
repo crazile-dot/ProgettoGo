@@ -11,10 +11,6 @@ type Args struct {
 	A, B int
 }
 
-type Arguments struct {
-	Quo, Rem int
-}
-
 type API int
 
 //esempio di RPC
@@ -42,8 +38,4 @@ func ServerConnection() {
 	if err != nil {
 		log.Fatal("error serving ", err)
 	}
-}
-
-func main() {
-	ServerConnection()
 }

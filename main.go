@@ -7,6 +7,9 @@ import (
 	"time"
 )
 
+var pathMirko = "/Users/mirko/GolandProjects/ProgettoGo/prova.txt.txt"
+var pathIlenia = "C:\\Users\\Ilenia\\GolandProjects\\ProgettoGo\\prova.txt.txt"
+
 func somma(ch chan int, uno int, due int) chan int {
 	ch <- uno + due
 	return ch
@@ -20,7 +23,7 @@ func main() {
 	for i := 0; i < N; i++ {
 		chans = append(chans, make(chan string))
 	}
-	file, err := os.Open("C:\\Users\\Ilenia\\GolandProjects\\ProgettoGo\\prova.txt.txt")
+	file, err := os.Open(pathMirko)
 	//handle errors while opening
 	if err != nil {
 		log.Fatalf("Error when opening file: %s", err)

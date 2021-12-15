@@ -6,7 +6,7 @@ import (
 )
 
 func work(input []string) {
-	find := "ciao"
+	find := "daniele"
 	values := mapPhase(input, find)
 	shuffleAndSort := shuffleAndSortPhase(values)
 	reduce := reducePhase(shuffleAndSort)

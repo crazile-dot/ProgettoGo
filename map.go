@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func work(input []string) {
+func work(input []string, num int) {
 	find := "daniele"
 	values := mapPhase(input, find)
 	shuffleAndSort := shuffleAndSortPhase(values)
@@ -13,7 +13,7 @@ func work(input []string) {
 
 	output := reduce[find]
 
-	fmt.Print(output)
+	fmt.Print(output, num)
 }
 
 // scrive in una map tutte le occorrenze della parola cercata assegnandole il valore 1

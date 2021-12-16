@@ -23,7 +23,7 @@ func main() {
 	for i := 0; i < N; i++ {
 		chans = append(chans, make(chan string))
 	}
-	file, err := os.Open(pathMirko)
+	file, err := os.Open(pathIlenia)
 	//handle errors while opening
 	if err != nil {
 		log.Fatalf("Error when opening file: %s", err)
@@ -38,7 +38,7 @@ func main() {
 	for i := 0; i < N; i++ {
 		var batch []string
 		len := j + ((len(splittedFile) - j) / (N - i))
-		time.Sleep(1000)
+		time.Sleep(2000)
 		batch = splittedFile[j:len]
 		go worker(chans[i], batch, i)
 		j = len
@@ -54,5 +54,5 @@ func main() {
 
 func worker(c chan string, splitted []string, num int) {
 	//fmt.Println("Sono il worker numero ", num, " ed ho queste righe: ", splitted)
-	work(splitted)
+	work(splitted, num)
 }

@@ -9,9 +9,14 @@ import (
 
 type API int
 
+type Result struct {
+	Line string
+	Num  int
+}
+
 //esempio di RPC
-func (a *API) MasterAction(arg1 string, reply *string) error {
-	startSplit(arg1)
+func (a *API) MasterAction(arg1 string, reply *Result) error {
+	reply.Line = startSplit(arg1)
 	return nil
 }
 

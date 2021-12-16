@@ -1,11 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 )
 
-func work(input []string, word string) {
+func work(input []string, word string) string {
 	values := mapPhase(input, word)
 
 	shuffleAndSort := shuffleAndSortPhase(values)
@@ -13,7 +12,9 @@ func work(input []string, word string) {
 
 	output := reduce[word]
 
-	fmt.Print(output)
+	//fmt.Print("output: " + output)
+	//fmt.Print("fine output\n")
+	return output
 }
 
 // scrive in una map tutte le occorrenze della parola cercata assegnandole il valore 1

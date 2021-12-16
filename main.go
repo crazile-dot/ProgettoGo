@@ -15,7 +15,7 @@ func somma(ch chan int, uno int, due int) chan int {
 	return ch
 }
 
-func main() {
+func startSplit(word string) string {
 	var N int = 4
 	var j int = 0
 	var tot int = 0
@@ -40,7 +40,7 @@ func main() {
 		len := j + ((len(splittedFile) - j) / (N - i))
 		time.Sleep(2000)
 		batch = splittedFile[j:len]
-		go worker(chans[i], batch, i)
+		go worker(chans[i], batch, i, word)
 		j = len
 	}
 
@@ -50,9 +50,16 @@ func main() {
 	}
 	//fmt.Println("in totale il file ha", tot, "righe")
 	file.Close()
+
+	//dobbiamo tornare la stringa
+	return "TODO"
 }
 
-func worker(c chan string, splitted []string, num int) {
+func worker(c chan string, splitted []string, num int, word string) {
 	//fmt.Println("Sono il worker numero ", num, " ed ho queste righe: ", splitted)
-	work(splitted, num)
+	work(splitted, word)
+}
+
+func main() {
+	ServerConnection()
 }

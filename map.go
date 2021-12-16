@@ -5,13 +5,13 @@ import (
 	"strings"
 )
 
-func work(input []string, num int) {
-	find := "daniele"
-	values := mapPhase(input, find)
+func work(input []string, word string) {
+	values := mapPhase(input, word)
+
 	shuffleAndSort := shuffleAndSortPhase(values)
 	reduce := reducePhase(shuffleAndSort)
 
-	output := reduce[find]
+	output := reduce[word]
 
 	fmt.Print(output, num)
 }

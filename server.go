@@ -7,15 +7,11 @@ import (
 	"net/rpc"
 )
 
-type Args struct {
-	A, B int
-}
-
 type API int
 
 //esempio di RPC
-func (a *API) MasterAction(arg1 Args, reply *int) error {
-	*reply = arg1.B + arg1.A
+func (a *API) MasterAction(arg1 string, reply *string) error {
+	startSplit(arg1)
 	return nil
 }
 

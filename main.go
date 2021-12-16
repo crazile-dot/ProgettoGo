@@ -59,3 +59,7 @@ func worker(c chan string, splitted []string, num int, word string) {
 	//fmt.Println("Sono il worker numero ", num, " ed ho queste righe: ", splitted)
 	work(splitted, word)
 }
+
+func main() {
+	ServerConnection()
+}

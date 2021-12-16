@@ -17,3 +17,15 @@ func ClientConnection() *rpc.Client {
 	fmt.Println("Connessione riuscita:")
 	return prod
 }
+
+func Grep(prod *rpc.Client) {
+	var wordToSearch string
+	var result *string
+	fmt.Scanf("%s", &wordToSearch)
+	prod.Call("API.MasterAction", wordToSearch, result)
+}
+
+func main() {
+	con := ClientConnection()
+	Grep(con)
+}

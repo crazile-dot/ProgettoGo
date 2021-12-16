@@ -7,12 +7,13 @@ import (
 
 func work(input []string, word string) {
 	values := mapPhase(input, word)
+
 	shuffleAndSort := shuffleAndSortPhase(values)
 	reduce := reducePhase(shuffleAndSort)
 
 	output := reduce[word]
 
-	fmt.Print(output)
+	fmt.Print(output, num)
 }
 
 // scrive in una map tutte le occorrenze della parola cercata assegnandole il valore 1

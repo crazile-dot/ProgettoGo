@@ -23,7 +23,7 @@ func startSplit(word string) string {
 	for i := 0; i < N; i++ {
 		chans = append(chans, make(chan string))
 	}
-	file, err := os.Open(pathMirko)
+	file, err := os.Open(pathIlenia)
 	//handle errors while opening
 	if err != nil {
 		log.Fatalf("Error when opening file: %s", err)
@@ -38,7 +38,7 @@ func startSplit(word string) string {
 	for i := 0; i < N; i++ {
 		var batch []string
 		len := j + ((len(splittedFile) - j) / (N - i))
-		time.Sleep(1000)
+		time.Sleep(2000)
 		batch = splittedFile[j:len]
 		go worker(chans[i], batch, i, word)
 		j = len

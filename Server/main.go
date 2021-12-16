@@ -14,6 +14,7 @@ func startSplit(word string) string {
 	var N int = 4
 	var j int = 0
 	var tot int = 0
+	var result string = ""
 	var chans []chan string
 	for i := 0; i < N; i++ {
 		chans = append(chans, make(chan string))
@@ -37,6 +38,9 @@ func startSplit(word string) string {
 		batch = splittedFile[j:len]
 		go worker(chans[i], batch, i, word)
 		j = len
+		partial := <-chans[i]
+		result += "\n" + partial
+
 	}
 
 	//handle first encountered error while reading
@@ -47,12 +51,13 @@ func startSplit(word string) string {
 	file.Close()
 
 	//dobbiamo tornare la stringa
-	return "TODO"
+	return result
 }
 
 func worker(c chan string, splitted []string, num int, word string) {
 	//fmt.Println("Sono il worker numero ", num, " ed ho queste righe: ", splitted)
-	work(splitted, word)
+	line := work(splitted, word)
+	c <- line
 }
 
 func main() {

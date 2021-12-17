@@ -1,6 +1,7 @@
 package main
 
 import (
+	"ProgettoGo/utils"
 	"log"
 	"net"
 	"net/http"
@@ -9,14 +10,11 @@ import (
 
 type API int
 
-type Result struct {
-	Line string
-	Num  int
-}
-
 //esempio di RPC
-func (a *API) MasterAction(arg1 string, reply *Result) error {
-	reply.Line = startSplit(arg1)
+func (a *API) MasterAction(arg1 string, reply *utils.Result) error {
+	var temp = startSplit(arg1)
+	reply.Line = temp.Line
+	reply.Num = temp.Num
 	return nil
 }
 

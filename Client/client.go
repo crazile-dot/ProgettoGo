@@ -1,15 +1,11 @@
 package main
 
 import (
+	"ProgettoGo/utils"
 	"fmt"
 	"log"
 	"net/rpc"
 )
-
-type Result struct {
-	Line string
-	Num  int
-}
 
 var tcp = "tcp"
 var host = "localhost:4040"
@@ -25,8 +21,8 @@ func ClientConnection() *rpc.Client {
 
 func Grep(prod *rpc.Client) {
 	var wordToSearch string
-	var res Result
-	fmt.Print("Inserire la parola da cercare:\n")
+	var res utils.Result
+	fmt.Println("Inserire la parola da cercare: ")
 	fmt.Scanf("%s", &wordToSearch)
 	err := prod.Call("API.MasterAction", wordToSearch, &res)
 	//gestiamo l'errore da parte del server, sarebbe da inserire anche un timeout
@@ -34,8 +30,8 @@ func Grep(prod *rpc.Client) {
 		print(err.Error())
 		return
 	}
-	print("la parola che cerchi appare nelle seguenti righe: \n")
-	print(res.Line)
+	fmt.Println("La parola che cerchi appare ", res.Num, " volte nelle seguenti righe: ")
+	fmt.Println(res.Line)
 
 }
 

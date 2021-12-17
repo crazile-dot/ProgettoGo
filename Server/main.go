@@ -24,7 +24,7 @@ func startSplit(word string) *utils.Result {
 	for i := 0; i < N; i++ {
 		chans = append(chans, make(chan utils.Result))
 	}
-	file, err := os.Open(path)
+	file, err := os.Open(pathIlenia)
 
 	//handle errors while opening
 	if err != nil {

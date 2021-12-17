@@ -8,7 +8,7 @@ import (
 )
 
 var tcp = "tcp"
-var host = "localhost:4040"
+var host = "3.17.180.201:4040"
 
 func ClientConnection() *rpc.Client {
 	prod, err := rpc.DialHTTP(tcp, host)

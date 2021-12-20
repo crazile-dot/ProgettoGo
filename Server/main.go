@@ -8,9 +8,7 @@ import (
 	"time"
 )
 
-var pathMirko = "/Users/mirko/GolandProjects/ProgettoGo/prova.txt.txt"
-var pathIlenia = "C:\\Users\\Ilenia\\GolandProjects\\ProgettoGo\\prova.txt.txt"
-var path = "/home/ec2-user/ProgettoGo/prova.txt.txt"
+var path = "/home/ec2-user/ProgettoGo/Novecento_Un_monologo.txt"
 
 func startSplit(word string) *utils.Result {
 	var N int = 4
@@ -24,7 +22,7 @@ func startSplit(word string) *utils.Result {
 	for i := 0; i < N; i++ {
 		chans = append(chans, make(chan utils.Result))
 	}
-	file, err := os.Open(pathIlenia)
+	file, err := os.Open(path)
 
 	//handle errors while opening
 	if err != nil {
